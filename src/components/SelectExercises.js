@@ -45,10 +45,10 @@ export default function Exercises(props) {
 												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 													Name
               									</th>
-												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">
 													Category
               									</th>
-												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">
 													Sub Category
               									</th>
 												<th scope="col" className="w-1/4 px-6 py-3">
@@ -68,10 +68,10 @@ export default function Exercises(props) {
 																<div className="text-sm font-medium text-gray-900">{exercise.name}</div>
 															</div>
 														</td>
-														<td className="px-6 py-4 whitespace-nowrap">
+														<td className="px-6 py-4 whitespace-nowrap hidden md:block">
 															<div className="text-sm text-gray-900">{exercise.category}</div>
 														</td>
-														<td className="px-6 py-4 whitespace-nowrap">
+														<td className="px-6 py-4 whitespace-nowrap hidden md:block">
 															<span className="text-sm text-gray-900">
 																{exercise.subCategory}
 															</span>
@@ -86,7 +86,7 @@ export default function Exercises(props) {
 																id={exercise.id + "-remove-btn"} 
 																onClick={() => removeFromExerciseList(exercise)} 
 																className="hidden ml-4 text-red-600 hover:text-red-900 font-bold"
-															>Remove From Workout</button>
+															>Remove</button>
 														</td>
 													</tr>
 												)
@@ -95,7 +95,7 @@ export default function Exercises(props) {
 									</table>
 								</div>
 								<div className="ml-4 mt-4 inline-flex justify-center align-center pb-1 px-3 border border-green-500 shadow-sm font-medium rounded-full text-green-500 bg-white hover:bg-green-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-								<Link to={{pathname:`/new-workout/`, state: {exerciseList: exerciseList, exercises:props.exercises}}} className="py-1 px-2 text-lg">Start Workout</Link>
+								<Link to={{pathname:`/new-workout/`, state: {exerciseList: exerciseList, exercises:props.exercises}}} className="py-1 pt-2 px-2 text-sm md:py-1 md:px-2 md:text-lg">Start Workout</Link>
 
 								</div>
 							</div>

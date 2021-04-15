@@ -9,7 +9,7 @@ export default function Exercises(props) {
 				<div className="px-4 py-1 sm:px-0">
 					<div className="flex flex-col">
 						<div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-8">
-							<div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+							<div className="py-2 align-middle inline-block min-w-full sm:px-2 lg:px-8">
 								<Link 
 									className="mb-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 									to="/add-exercise"
@@ -23,10 +23,10 @@ export default function Exercises(props) {
 												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 													Name
               									</th>
-												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">
 													Category
               									</th>
-												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">
 													Sub Category
               									</th>
 												<th scope="col" className="relative px-6 py-3">
@@ -46,10 +46,10 @@ export default function Exercises(props) {
 																<div className="text-sm font-medium text-gray-900">{exercise.name}</div>
 															</div>
 														</td>
-														<td className="px-6 py-4 whitespace-nowrap">
+														<td className="px-6 py-4 whitespace-nowrap hidden md:block">
 															<div className="text-sm text-gray-900">{exercise.category}</div>
 														</td>
-														<td className="px-6 py-4 whitespace-nowrap">
+														<td className="px-6 py-4 whitespace-nowrap hidden md:block">
 															<span className="text-sm text-gray-900">
 																{exercise.subCategory}
 															</span>

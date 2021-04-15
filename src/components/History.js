@@ -17,10 +17,10 @@ export default function History(props) {
 												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 													Date
               									</th>
-												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">
 													Number of Exercises
               									</th>
-												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+												<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">
 													Exercises
               									</th>
 												<th scope="col" className="relative px-6 py-3">
@@ -41,12 +41,12 @@ export default function History(props) {
 																<div className="text-sm font-medium text-gray-900">{date.toDateString()}</div>
 															</div>
 														</td>
-														<td className="px-6 py-4 whitespace-nowrap">
+														<td className="px-6 py-4 whitespace-nowrap hidden md:block">
 															<div className="text-sm text-gray-900">
 																{workout.exercises.length}
 															</div>
 														</td>
-														<td className="px-6 py-4 whitespace-nowrap">
+														<td className="px-6 py-4 whitespace-nowrap hidden md:block">
 															<div className="text-sm text-gray-900">
 																{workout.exercises.map((exercise) => {
 																	return (

@@ -76,17 +76,22 @@ export default function NewWorkout(props) {
 										<div key={exercise.id} className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg mt-3">
 											<table className="min-w-full divide-y divide-gray-200 table-fixed border-gray-300 border-b-2">
 												<thead className="bg-gray-50">
+													<div className="table-row md:hidden">
+														<div className="table-cell w-full text-left px-3 pt-3 font-extrabold text-gray-700 uppercase md:tracking-wider">{exercise.name}</div>
+														<div className="table-cell"></div>
+														<div className="table-cell"></div>
+													</div>
 													<tr>
-														<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-extrabold text-gray-700 uppercase tracking-wider">
+														<th scope="col" className="hidden md:block md:w-1/4 md:px-6 py-3 text-left text-xs font-extrabold text-gray-700 uppercase md:tracking-wider">
 															{exercise.name}
 														</th>
-														<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+														<th scope="col" className="md:w-1/4 px-6 py-3 text-xs font-medium text-gray-500 uppercase md:tracking-wider text-left md:text-center">
 															Reps
               												</th>
-														<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+														<th scope="col" className="md:w-1/4 px-6 py-3 text-xs font-medium text-gray-500 uppercase md:tracking-wider text-left md:text-center">
 															Weight
               												</th>
-														<th scope="col" className="w-1/4 relative px-6 py-3 text-center">
+														<th scope="col" className="md:w-1/4 px-6 py-3 text-right md:text-center">
 															<button
 																onClick={() => { deleteExercise(index) }}
 																className="inline-flex justify-center pb-1 px-3 border border-red-500 shadow-sm text-xs font-medium rounded-full text-red-500 bg-white hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -98,7 +103,7 @@ export default function NewWorkout(props) {
 													{exercise.sets.map((set, index) => {
 														return (
 															<tr key={index}>
-																<td className="px-6 py-4 whitespace-nowrap">
+																<td className="px-6 py-4 whitespace-nowrap hidden md:block">
 																</td>
 																<td className="px-6 py-4 whitespace-nowrap text-center">
 																	<div className="text-sm text-gray-900">
@@ -127,9 +132,9 @@ export default function NewWorkout(props) {
 											<form onSubmit={setsSubmitHandler(exercise.id)}>
 												<div className="table-row-group bg-gray-50 border-gray-300 border-t-4">
 													<div className="table-row">
-														<div className="table-cell w-1/4 px-6 py-4 whitespace-nowrap">
+														<div className="table-cell w-1/4 px-6 py-4 whitespace-nowrap hidden md:block">
 														</div>
-														<div className="table-cell w-1/4 text-center px-20 py-4 whitespace-nowrap">
+														<div className="table-cell w-1/4 text-center md:px-28 py-4 whitespace-nowrap">
 															<input
 																type="number"
 																value={exercise.newReps}
@@ -137,7 +142,7 @@ export default function NewWorkout(props) {
 																className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
 															/>
 														</div>
-														<div className="table-cell w-1/4 px-12 py-4 pl-12 whitespace-nowrap">
+														<div className="table-cell w-1/4 md:px-20 py-4 md:pl-16 whitespace-nowrap">
 															<div className="mt-1 flex rounded-md shadow-sm">
 																<input
 																	type="number"
@@ -167,7 +172,7 @@ export default function NewWorkout(props) {
 								})}
 							</div>
 							<button
-								onClick={() => {props.addWorkout(workout)}}
+								onClick={() => { props.addWorkout(workout) }}
 								className="mx-8 my-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 							>
 								Save Workout
