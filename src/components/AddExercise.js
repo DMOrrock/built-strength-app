@@ -1,10 +1,10 @@
-import PageTitle from './PageTitle'
+import PageTitle from './PageTitle';
 import { useState } from 'react';
 
 export default function AddExercise(props) {
-	const [name, setName] = useState([]);
-	const [category, setCategory] = useState([]);
-	const [subCategory, setSubCategory] = useState([]);
+	const [name, setName] = useState();
+	const [category, setCategory] = useState();
+	const [subCategory, setSubCategory] = useState();
 
 	const updateName = (event) => {
 		setName(event.target.value);
@@ -18,13 +18,13 @@ export default function AddExercise(props) {
 		setSubCategory(event.target.value);
 	};
 
-	const submitHandler = (e) => {
-		e.preventDefault();
+	const submitHandler = (event) => {
+		event.preventDefault();
 
 		let exercise = {
-			name: name,
-      		category: category,
-      		subCategory: subCategory
+			name,
+      		category,
+      		subCategory
 		}
 
 		props.addExercise(exercise);

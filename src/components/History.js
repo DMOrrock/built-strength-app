@@ -1,4 +1,5 @@
-import PageTitle from './PageTitle'
+import PageTitle from './PageTitle';
+import { Link } from 'react-router-dom';
 
 export default function History(props) {
 	return (
@@ -29,8 +30,7 @@ export default function History(props) {
 										</thead>
 										<tbody className="bg-white divide-y divide-gray-200">
 											{props.workouts.map((workout) => {
-												let dateArr = workout.date.split(/\D+/)
-												let date = new Date(dateArr[0], dateArr[1], dateArr[2]);												
+												let date = new Date(workout.date);
 												return (
 													<tr key={workout.id} >
 														<td className="px-6 py-4 whitespace-nowrap">
@@ -43,7 +43,7 @@ export default function History(props) {
 														</td>
 														<td className="px-6 py-4 whitespace-nowrap">
 															<div className="text-sm text-gray-900">
-																{workout.exerciseCnt}
+																{workout.exercises.length}
 															</div>
 														</td>
 														<td className="px-6 py-4 whitespace-nowrap">
@@ -56,8 +56,23 @@ export default function History(props) {
 															</div>
 														</td>
 														<td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-															<span href="#" className="text-indigo-600 hover:text-indigo-900">View Details</span>
-															<span className="ml-4 text-red-600 hover:text-red-900">Delete</span>
+															<Link
+																to={
+																	{
+																		pathname: `/view-workout/`,
+																		state: { workout }
+																	}
+																}
+																className="ml-4 text-indigo-600 hover:text-indigo-900 text-sm font-medium"
+															>
+																View Details
+															</Link>
+															<button
+																onClick={() => { props.removeWorkout(workout.id) }}
+																className="ml-4 text-red-600 hover:text-red-900 text-sm font-medium"
+															>
+																Delete
+															</button>
 														</td>
 													</tr>
 												)

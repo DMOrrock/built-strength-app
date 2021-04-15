@@ -7,8 +7,10 @@ import NewWorkout from './NewWorkout';
 import Exercises from './Exercises';
 import EditExercise from './EditExercise';
 import AddExercise from './AddExercise';
+import SelectExercises from './SelectExercises';
+import ViewWorkout from './ViewWorkout';
 import '../styles/App.css';
-import api from '../api/exercises'
+import api from '../api/api'
 import { useEffect, useState } from 'react';
 
 export default function App() {
@@ -59,24 +61,50 @@ export default function App() {
     history.push('/exercises');
   }
 
+  // CRUD Funcitons for Workouts
+  const addWorkout = async (workout) => {
+    const request = {
+      ...workout,
+    };
+
+    const response = await api.post("/workouts", request);
+    setWorkouts([...workouts, response.data]);
+    history.push('/history');
+  }
+
+  const removeWorkout = async (id) => {
+    await api.delete(`/workouts/${id}`);
+    const newWorkoutList = workouts.filter((workout) => {
+      return workout.id !== id;
+    })
+
+    setWorkouts(newWorkoutList);
+  }
+
   return (
-    <div className="bg-gray-100 h-screen">
+    <div className="bg-gray-100 min-h-screen h-full">
       <Switch>
-        <Route path="/new-workout">
-          <NewWorkout />
-        </Route>
-        <Route path="/history">
-          <History workouts={workouts} />
-        </Route>
-        <Route path="/exercises">
-          <Exercises exercises={exercises} removeExercise={removeExercise} />
-        </Route>
         <Route path="/add-exercise">
           <AddExercise addExercise={addExercise} />
         </Route>
         <Route path="/edit-exercise">
           <EditExercise updateExercise={updateExercise} />
         </Route>
+        <Route path="/exercises">
+          <Exercises exercises={exercises} removeExercise={removeExercise} />
+        </Route>
+        <Route path="/history">
+          <History workouts={workouts} removeWorkout={removeWorkout} />
+        </Route>
+        <Route path="/new-workout">
+          <NewWorkout addWorkout={addWorkout} />
+        </Route>
+        <Route path="/select-exercises">
+          <SelectExercises exercises={exercises} />
+        </Route>
+        <Route path="/view-workout">
+          <ViewWorkout/>
+        </Route>      
         <Route path="/">
           <Home />
         </Route>

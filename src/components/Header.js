@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../images/logo-white.png'
+import logo from '../images/logo-white.png';
 
 export default function Header() {
 	return (
@@ -17,7 +17,7 @@ export default function Header() {
 
 								<Link to='/' className="text-gray-300 hover:bg-gray-700 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium">Home</Link>
 
-								<Link to='/new-workout' className="text-gray-300 hover:bg-gray-700 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium">New Workout</Link>
+								<Link to='/select-exercises' className="text-gray-300 hover:bg-gray-700 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium">New Workout</Link>
 
 								<Link to='/history' className="text-gray-300 hover:bg-gray-700 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium">Workout History</Link>
 								
@@ -32,7 +32,7 @@ export default function Header() {
 
 					<Link to='/' className="text-gray-300 hover:bg-gray-700 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Home</Link>
 
-					<Link to='/new-workout' className="text-gray-300 hover:bg-gray-700 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">New Workout</Link>
+					<Link to='/select-exercises' className="text-gray-300 hover:bg-gray-700 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">New Workout</Link>
 
 					<Link to='/history' className="text-gray-300 hover:bg-gray-700 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Workout History</Link>
 
