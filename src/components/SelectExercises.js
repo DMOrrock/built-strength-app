@@ -36,7 +36,7 @@ export default function Exercises(props) {
 			<div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
 				<div className="px-4 py-1 sm:px-0">
 					<div className="flex flex-col">
-						<div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-8">
+						<div className="my-1 overflow-x-auto sm:-mx-6 lg:-mx-8">
 							<div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 								<div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 									<table className="min-w-full divide-y divide-gray-200">
@@ -45,10 +45,10 @@ export default function Exercises(props) {
 												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 													Name
               									</th>
-												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">
+												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 													Category
               									</th>
-												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">
+												<th scope="col" className="w-1/4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 													Sub Category
               									</th>
 												<th scope="col" className="w-1/4 px-6 py-3">
@@ -68,10 +68,10 @@ export default function Exercises(props) {
 																<div className="text-sm font-medium text-gray-900">{exercise.name}</div>
 															</div>
 														</td>
-														<td className="px-6 py-4 whitespace-nowrap hidden md:block">
+														<td className="px-6 py-4 whitespace-nowrap">
 															<div className="text-sm text-gray-900">{exercise.category}</div>
 														</td>
-														<td className="px-6 py-4 whitespace-nowrap hidden md:block">
+														<td className="px-6 py-4 whitespace-nowrap">
 															<span className="text-sm text-gray-900">
 																{exercise.subCategory}
 															</span>
