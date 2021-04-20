@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 export default function Exercises(props) {
 	const [exerciseList, setExerciseList] = useState([]);
 	const setPageTitle = props.setPageTitle;
+	const setPageTitleVisibility = props.setPageTitleVisibility;
 	
 	useEffect(_=>{
 		setPageTitle("Select Exercises");
-	  },[setPageTitle]);
+		setPageTitleVisibility(true);
+	  },[setPageTitle, setPageTitleVisibility]);
 
 	const addToExerciseList = (exercise) => {
 		exercise.sets = [];

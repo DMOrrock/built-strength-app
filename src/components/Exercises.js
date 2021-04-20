@@ -4,10 +4,12 @@ import Table from './Table'
 
 export default function Exercises(props) {
 	const setPageTitle = props.setPageTitle;
+	const setPageTitleVisibility = props.setPageTitleVisibility;
 
 	useEffect(_ => {
 		setPageTitle("Exercises");
-	}, [setPageTitle]);
+		setPageTitleVisibility(true);
+	}, [setPageTitle, setPageTitleVisibility]);
 	return (
 		<div>
 			<Link

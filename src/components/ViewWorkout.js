@@ -8,10 +8,12 @@ export default function NewWorkout(props) {
 	let date = new Date(workout.date);
 	const pageTitle = `View Workout - ${date.toDateString()}`;
 	const setPageTitle = props.setPageTitle;
+	const setPageTitleVisibility = props.setPageTitleVisibility;
 
 	useEffect(_ => {
 		setPageTitle(pageTitle);
-	}, [setPageTitle, pageTitle]);
+		setPageTitleVisibility(true);
+	}, [setPageTitle, pageTitle, setPageTitleVisibility]);
 
 	return (
 		<div>

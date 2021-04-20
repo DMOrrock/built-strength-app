@@ -18,6 +18,7 @@ export default function App() {
   const [exercises, setExercises] = useState([]);
   const [workouts, setWorkouts] = useState([]);
   const [pageTitle, setPageTitle] = useState("Home")
+  const [pageTitleVisibility, setPageTitleVisibility] = useState(true)
   let history = useHistory();
 
   useEffect(() => {
@@ -85,7 +86,7 @@ export default function App() {
 
   return (
     <div className="bg-gray-100 min-h-screen h-full">
-      <PageTitle title={pageTitle} />
+      <PageTitle title={pageTitle} visibility={pageTitleVisibility} />
       <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           <Switch>
@@ -93,12 +94,14 @@ export default function App() {
               <AddExercise
                 addExercise={addExercise}
                 setPageTitle={setPageTitle}
+                setPageTitleVisibility={setPageTitleVisibility}
               />
             </Route>
             <Route path="/edit-exercise">
               <EditExercise
                 updateExercise={updateExercise}
                 setPageTitle={setPageTitle}
+                setPageTitleVisibility={setPageTitleVisibility}
               />
             </Route>
             <Route path="/exercises">
@@ -106,6 +109,7 @@ export default function App() {
                 exercises={exercises}
                 removeExercise={removeExercise}
                 setPageTitle={setPageTitle}
+                setPageTitleVisibility={setPageTitleVisibility}
               />
             </Route>
             <Route path="/history">
@@ -113,28 +117,33 @@ export default function App() {
                 workouts={workouts}
                 removeWorkout={removeWorkout}
                 setPageTitle={setPageTitle}
+                setPageTitleVisibility={setPageTitleVisibility}
               />
             </Route>
             <Route path="/new-workout">
               <NewWorkout
                 addWorkout={addWorkout}
                 setPageTitle={setPageTitle}
+                setPageTitleVisibility={setPageTitleVisibility}
               />
             </Route>
             <Route path="/select-exercises">
               <SelectExercises
                 exercises={exercises}
                 setPageTitle={setPageTitle}
+                setPageTitleVisibility={setPageTitleVisibility}
               />
             </Route>
             <Route path="/view-workout">
               <ViewWorkout
                 setPageTitle={setPageTitle}
+                setPageTitleVisibility={setPageTitleVisibility}
               />
             </Route>
             <Route path="/">
               <Home
                 setPageTitle={setPageTitle}
+                setPageTitleVisibility={setPageTitleVisibility}
               />
             </Route>
           </Switch>

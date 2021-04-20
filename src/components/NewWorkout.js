@@ -12,9 +12,12 @@ export default function NewWorkout(props) {
 		exercises: exerciseList,
 	})
 	const setPageTitle = props.setPageTitle;
+	const setPageTitleVisibility = props.setPageTitleVisibility;
+
 	useEffect(_=>{
 		setPageTitle("New Workout");
-	  },[setPageTitle]);
+		setPageTitleVisibility(true);
+	  },[setPageTitle, setPageTitleVisibility]);
 
 	const cloneWorkout = () => {
 		// Deep Clone one liner

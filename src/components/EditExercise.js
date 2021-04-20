@@ -9,10 +9,12 @@ export default function EditExercise(props) {
 	const [category, setCategory] = useState([exercise.category]);
 	const [subCategory, setSubCategory] = useState([exercise.subCategory]);
 	const setPageTitle = props.setPageTitle;
+	const setPageTitleVisibility = props.setPageTitleVisibility;
 	
 	useEffect(_=>{
 		setPageTitle(pageTitle);
-	  },[setPageTitle, pageTitle]);
+		setPageTitleVisibility(true);
+	  },[setPageTitle, pageTitle, setPageTitleVisibility]);
 
 	const updateName = (event) => {
 		setName(event.target.value);

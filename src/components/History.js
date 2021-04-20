@@ -4,9 +4,12 @@ import Table from './Table'
 export default function History(props) {
 	const tableData = [];
 	const setPageTitle = props.setPageTitle;
+	const setPageTitleVisibility = props.setPageTitleVisibility;
+
 	useEffect(_ => {
 		setPageTitle("Workout History");
-	}, [setPageTitle]);
+		setPageTitleVisibility(true);
+	}, [setPageTitle, setPageTitleVisibility]);
 
 	props.workouts.forEach(workout => {
 		let date = new Date(workout.date);

@@ -27,33 +27,33 @@ export default function Table(props) {
 							</thead>
 							<tbody className="bg-white divide-y divide-gray-200">
 								{data.map((item, trIndex) => {
-									if (actions.length !== 0) {
-										return (
-											<tr key={trIndex} >
-												{dataNames.map((dataName, tdIndex) => {
-													if (tdIndex === 0) {
-														return (
-															<td key={trIndex + "-" + tdIndex} className="px-6 py-4 whitespace-nowrap">
-																<div className="flex items-center">
-																	<div>
-																		<p className="text-sm font-medium text-gray-900">{item[dataName]}</p>
-																	</div>
+									return (
+										<tr key={trIndex} >
+											{dataNames.map((dataName, tdIndex) => {
+												if (tdIndex === 0) {
+													return (
+														<td key={trIndex + "-" + tdIndex} className="px-6 py-4 whitespace-nowrap">
+															<div className="flex items-center">
+																<div>
+																	<p className="text-sm font-medium text-gray-900">{item[dataName]}</p>
 																</div>
-															</td>
-														)
-													}
-													else {
-														return (
-															<td key={trIndex + "-" + tdIndex} className="px-6 py-4 whitespace-nowrap">
-																<div className="flex items-center">
-																	<div>
-																		<p className="text-sm text-gray-900">{item[dataName]}</p>
-																	</div>
+															</div>
+														</td>
+													)
+												}
+												else {
+													return (
+														<td key={trIndex + "-" + tdIndex} className="px-6 py-4 whitespace-nowrap">
+															<div className="flex items-center">
+																<div>
+																	<p className="text-sm text-gray-900">{item[dataName]}</p>
 																</div>
-															</td>
-														)
-													}
-												})}
+															</div>
+														</td>
+													)
+												}
+											})}
+											{actions.length !== 0 ? (
 												<td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 													{actions.map((action, actIndex) => {
 														if (action.type === "Link" && action.passState) {
@@ -81,39 +81,9 @@ export default function Table(props) {
 														}
 													})}
 												</td>
-											</tr>
-										)
-									}
-									else {
-										return (
-											<tr key={trIndex} >
-												{dataNames.map((dataName, tdIndex) => {
-													if (tdIndex === 0) {
-														return (
-															<td key={trIndex + "-" + tdIndex} className="px-6 py-4 whitespace-nowrap">
-																<div className="flex items-center">
-																	<div>
-																		<p className="text-sm font-medium text-gray-900">{item[dataName]}</p>
-																	</div>
-																</div>
-															</td>
-														)
-													}
-													else {
-														return (
-															<td key={trIndex + "-" + tdIndex} className="px-6 py-4 whitespace-nowrap">
-																<div className="flex items-center">
-																	<div>
-																		<p className="text-sm text-gray-900">{item[dataName]}</p>
-																	</div>
-																</div>
-															</td>
-														)
-													}
-												})}
-											</tr>
-										)
-									}
+											) : (null)}
+										</tr>
+									)
 								})}
 							</tbody>
 						</table>

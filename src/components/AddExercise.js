@@ -5,10 +5,12 @@ export default function AddExercise(props) {
 	const [category, setCategory] = useState();
 	const [subCategory, setSubCategory] = useState();
 	const setPageTitle = props.setPageTitle;
+	const setPageTitleVisibility = props.setPageTitleVisibility;
 
 	useEffect(_=>{
 		setPageTitle("Add Exercise");
-	  },[setPageTitle]);
+		setPageTitleVisibility(true);
+	  },[setPageTitle, setPageTitleVisibility]);
 
 	const updateName = (event) => {
 		setName(event.target.value);
