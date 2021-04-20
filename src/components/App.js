@@ -9,6 +9,7 @@ import EditExercise from './EditExercise';
 import AddExercise from './AddExercise';
 import SelectExercises from './SelectExercises';
 import ViewWorkout from './ViewWorkout';
+import PageTitle from './PageTitle'
 import '../styles/App.css';
 import api from '../api/api'
 import { useEffect, useState } from 'react';
@@ -16,6 +17,7 @@ import { useEffect, useState } from 'react';
 export default function App() {
   const [exercises, setExercises] = useState([]);
   const [workouts, setWorkouts] = useState([]);
+  const [pageTitle, setPageTitle] = useState("Home")
   let history = useHistory();
 
   useEffect(() => {
@@ -83,32 +85,61 @@ export default function App() {
 
   return (
     <div className="bg-gray-100 min-h-screen h-full">
-      <Switch>
-        <Route path="/add-exercise">
-          <AddExercise addExercise={addExercise} />
-        </Route>
-        <Route path="/edit-exercise">
-          <EditExercise updateExercise={updateExercise} />
-        </Route>
-        <Route path="/exercises">
-          <Exercises exercises={exercises} removeExercise={removeExercise} />
-        </Route>
-        <Route path="/history">
-          <History workouts={workouts} removeWorkout={removeWorkout} />
-        </Route>
-        <Route path="/new-workout">
-          <NewWorkout addWorkout={addWorkout} />
-        </Route>
-        <Route path="/select-exercises">
-          <SelectExercises exercises={exercises} />
-        </Route>
-        <Route path="/view-workout">
-          <ViewWorkout/>
-        </Route>      
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </div>
+      <PageTitle title={pageTitle} />
+      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="px-4 py-6 sm:px-0">
+          <Switch>
+            <Route path="/add-exercise">
+              <AddExercise
+                addExercise={addExercise}
+                setPageTitle={setPageTitle}
+              />
+            </Route>
+            <Route path="/edit-exercise">
+              <EditExercise
+                updateExercise={updateExercise}
+                setPageTitle={setPageTitle}
+              />
+            </Route>
+            <Route path="/exercises">
+              <Exercises
+                exercises={exercises}
+                removeExercise={removeExercise}
+                setPageTitle={setPageTitle}
+              />
+            </Route>
+            <Route path="/history">
+              <History
+                workouts={workouts}
+                removeWorkout={removeWorkout}
+                setPageTitle={setPageTitle}
+              />
+            </Route>
+            <Route path="/new-workout">
+              <NewWorkout
+                addWorkout={addWorkout}
+                setPageTitle={setPageTitle}
+              />
+            </Route>
+            <Route path="/select-exercises">
+              <SelectExercises
+                exercises={exercises}
+                setPageTitle={setPageTitle}
+              />
+            </Route>
+            <Route path="/view-workout">
+              <ViewWorkout
+                setPageTitle={setPageTitle}
+              />
+            </Route>
+            <Route path="/">
+              <Home
+                setPageTitle={setPageTitle}
+              />
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </div >
   );
 }
