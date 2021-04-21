@@ -40,7 +40,6 @@ export default function EditExercise(props) {
 
 		props.updateExercise(newExercise);
 	}
-	props.setPageTitle(pageTitle)
 	return (
 		<div>
 			<div className="mt-10 sm:mt-0">

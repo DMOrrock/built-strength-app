@@ -1,11 +1,12 @@
 import uuid from 'react-uuid'
 import { useLocation } from "react-router-dom"
 import { useEffect, useState } from 'react';
+import Dropdown from './Dropdown';
 
 export default function NewWorkout(props) {
 	let location = useLocation();
 	const exerciseList = location.state?.exerciseList;
-	// const exercises = location.state?.exercises;
+	const exercises = location.state?.exercises;
 	const [workout, setWorkout] = useState({
 		id: uuid(),
 		date: new Date().toString(),
@@ -14,14 +15,23 @@ export default function NewWorkout(props) {
 	const setPageTitle = props.setPageTitle;
 	const setPageTitleVisibility = props.setPageTitleVisibility;
 
-	useEffect(_=>{
+	useEffect(_ => {
 		setPageTitle("New Workout");
 		setPageTitleVisibility(true);
-	  },[setPageTitle, setPageTitleVisibility]);
+	}, [setPageTitle, setPageTitleVisibility]);
 
 	const cloneWorkout = () => {
 		// Deep Clone one liner
 		return JSON.parse(JSON.stringify(workout));
+	}
+
+	const addExercise = (exercise) => {
+		let newWorkout = cloneWorkout();
+		exercise.sets = [];
+		exercise.newReps = "";
+		exercise.newWeight = "";
+		newWorkout.exercises.push(exercise);
+		setWorkout(newWorkout);
 	}
 
 	const deleteExercise = (index) => {
@@ -71,7 +81,7 @@ export default function NewWorkout(props) {
 	return (
 		<div>
 			<div className="flex flex-col">
-				<div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+				<div className="-my-2 sm:-mx-6 lg:-mx-8">
 					<div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 						{workout.exercises.map((exercise, index) => {
 							return (
@@ -151,7 +161,6 @@ export default function NewWorkout(props) {
 															value={exercise.newWeight}
 															onChange={updateNewWeight(exercise.id)}
 															name="reps"
-															id="reps"
 															className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300"
 														/>
 														<span className="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
@@ -173,12 +182,22 @@ export default function NewWorkout(props) {
 							)
 						})}
 					</div>
-					<button
-						onClick={() => { props.addWorkout(workout) }}
-						className="mx-8 my-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-					>
-						Save Workout
-            				</button>
+					<div className="md:grid md:grid-cols-4 md:gap-6 shadow border-b border-gray-200 sm:rounded-lg mt-3 bg-gray-50 mx-20">
+						<div className="md:col-span-2 mx-8 my-4 inline-flex justify-center align-center">
+							<span className="align-center justify-center mr-3 mt-3 text-left text-xs font-extrabold text-gray-700 uppercase">Add Workout:</span>
+							<Dropdown
+								data={exercises}
+								prompt="Select Exercise"
+								onChange={addExercise} />
+						</div>
+						<div className="md:col-span-1 mx-8 my-4 inline-flex justify-center"></div>
+						<div className="md:col-span-1 mx-8 my-4 inline-flex justify-center">
+							<button
+								onClick={() => { props.addWorkout(workout) }}
+								className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+							>Finish Workout</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

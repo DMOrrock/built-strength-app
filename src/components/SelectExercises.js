@@ -35,7 +35,6 @@ export default function Exercises(props) {
 		document.getElementById(exercise.id + "-add-btn").classList.remove('hidden');
 		document.getElementById(exercise.id + "-row").classList.remove('bg-green-100');
 	}
-	props.setPageTitle("Select Exercises")
 	return (
 		<div>
 			<div className="flex flex-col">
@@ -99,8 +98,16 @@ export default function Exercises(props) {
 							</table>
 						</div>
 						<div className="ml-4 mt-4 inline-flex justify-center align-center pb-1 px-3 border border-green-500 shadow-sm font-medium rounded-full text-green-500 bg-white hover:bg-green-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-							<Link to={{ pathname: `/new-workout/`, state: { exerciseList: exerciseList, exercises: props.exercises } }} className="py-1 pt-2 px-2 text-sm md:py-1 md:px-2 md:text-lg">Start Workout</Link>
-
+							<Link 
+								to={{ 
+									pathname: `/new-workout/`, 
+									state: { 
+										exerciseList: exerciseList, 
+										exercises: props.exercises
+									}
+									}} 
+								className="py-1 pt-2 px-2 text-sm md:py-1 md:px-2 md:text-lg"
+							>Start Workout</Link>
 						</div>
 					</div>
 				</div>
